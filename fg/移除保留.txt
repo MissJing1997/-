@@ -1,0 +1,233 @@
+/* <ProjectLayout
+        title="部名录"
+        content={
+          <Header
+            {...this.state}
+            searchBtn={this.searchBtn}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+        }
+      >
+        {list.length ? (
+          list.map((val, index) => {
+            const key = `key-${index}`;
+            return (
+              <div key={key} className={styles.center}>
+                <div className={styles.team}>
+                  <h3>{val.name}</h3>
+                  <span className={styles.setof}>
+                    共有
+                    {val.teamCount}
+                    个班组
+                  </span>
+                  <span style={{ marginRight: '10px' }}>
+                    在场
+                    {val.inCount}人
+                  </span>
+                  <span>
+                    离场
+                    {val.outCount}人
+                  </span>
+                </div>
+                <div className={styles.group}>
+                  <Link
+                    className={styles.details}
+                    to={`${this.pathName}/${val.id}?name=${val.name}`}
+                  >
+                    <AutoIcon style={{ fontSize: '24px', color: '#BBBBBB' }} type="icon-details" />
+                  </Link>
+                </div>
+                <div className={styles.creator}>
+                  <span>{this.statisticsTime} : </span>
+                  <span> {moment(this.time).format('YYYY-MM-DD')} </span>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div style={{ marginTop: '20px' }}>
+            <NoData
+              icon="icon-man-hour"
+              loading={isLoading}
+              text="您的项目下所属的各班组还没有人员的考勤记录"
+            />
+          </div>
+        )}
+        
+        {!!list.length && (
+          <div className={styles.center}>
+            <div className={styles.paging}>
+              <QueryPagination
+                className={styles.pagings}
+                showSizeChanger 
+                showQuickJumper
+                current={curPage}
+                pageSize={pageSize}
+                defaultCurrent={pageCount}
+                total={total}
+              />
+            </div>
+          </div>
+        )}
+      </ProjectLayout> */
+
+
+
+
+
+
+
+
+css部分
+
+
+/* .paging {
+  float: right;
+  margin: 33px 34px 0 0;
+}
+.modal {
+  > h2 {
+    font-weight: 800;
+  }
+  > p {
+    font-weight: 600;
+    margin-top: 30px;
+  }
+}
+.newclass {
+  width: 197px;
+  height: 48px;
+  > .plussign {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #5088ff;
+    border-radius: 2px;
+  }
+  > span {
+    color: #5088ff;
+  }
+}
+.newmodal {
+  border-radius: 4px;
+}
+.enetr {
+  width: 260px;
+  height: 48px;
+  margin-left: 32px;
+  margin-top: 48px;
+  margin-bottom: 50px;
+}
+.newname {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+.center {
+  width: 98%;
+  height: 120px;
+  background: #fff;
+  margin: 16px 16px;
+  border-radius: 6px;
+  > .team {
+    float: left;
+    margin: 21px 0 0 22px;
+    color: #333;
+    > h3 {
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+    > .setof {
+      margin-right: 20px;
+    }
+  }
+  > .group {
+    float: right;
+    margin: 24px 25px 0 0;
+    font-weight: 600;
+  }
+  > .creator {
+    float: right;
+    margin: 81px -20px 0 0;
+    color: #333;
+  }
+}
+.iconc {
+  width: 22px;
+  height: 22px;
+  fill: #bbb;
+} */
+
+
+
+
+
+
+
+
+
+部组名录
+
+{/* <ProjectLayout title="部名录">
+        {list.length ? (
+          <div className={styles.center}>
+            <Header
+              {...this.state}
+              searchBtn={this.searchBtn}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+            <Row gutter={16}>
+              {list.map((val, index) => {
+                const key = `key-${index}`;
+                return (
+                  <Col key={key} lg={6} md={12} sm={12} xs={24}>
+                    <div className={styles.banner}>
+                      <Link to={`${this.pathName}/${val.id}?name=${val.name}`}>
+                        <div className={styles.division}>
+                          <span className={styles.teamName}>{val.name}</span>
+                        </div>
+                        <div className={styles.newclass}>
+                          <div className={styles.setof}>
+                            <p className={styles.newName}>拥有小组</p>
+                            <span className={styles.newNumber}>{val.teamCount}</span>
+                          </div>
+                          <div className={styles.setofs}>
+                            <p className={styles.newName}>在场人数</p>
+                            <span className={styles.newNumber}>{val.inCount}</span>
+                          </div>
+                          <div>
+                            <p className={styles.newName}>离场人数</p>
+                            <span className={styles.newNumber}>{val.outCount}</span>
+                          </div>
+                        </div>
+                        <div className={styles.time}>
+                          <span className={styles.creationTime}>{this.statisticsTime} : </span>
+                          <span> {moment(this.time).format('YYYY/MM/DD')} </span>
+                        </div>
+                      </Link>
+                    </div>
+                  </Col>
+                );
+              })}
+            </Row>
+            {!!list.length && (
+              <QueryPagination
+                className={styles.pagings}
+                showSizeChanger
+                showQuickJumper
+                current={curPage}
+                pageSize={pageSize}
+                defaultCurrent={pageCount}
+                total={total}
+              />
+            )}
+          </div>
+        ) : (
+          <div style={{ marginTop: '20px' }}>
+            <NoData
+              icon="icon-man-hour"
+              loading={isLoading}
+              text="您的项目下所属的各班组还没有人员的考勤记录"
+            />
+          </div>
+        )}
+      </ProjectLayout> */}
